@@ -1,0 +1,120 @@
+class Conta:
+    
+
+
+  def __init__(self,numero,nome,saldo,limite):
+    print('Construindo objeto..{}'.format(self))
+    self.__numero = numero 
+    self.__nome = nome
+    self.__saldo = saldo
+    self.__limite = limite
+
+
+  def extrato(self):
+    print('Saldo {} do titular {}'.format(self.__saldo,self.__nome))
+
+  def deposita(self,valor):
+    self.__saldo += valor
+
+
+
+  def __pode_sacar(self, valor_a_sacar):
+    valor_disponivel_sacar = self.__limite + self.__saldo
+    return valor_a_sacar <= valor_disponivel_sacar
+      
+
+
+
+
+
+  def saca(self,valor):
+    if self.__pode_sacar(valor):
+      print('Saque feito com sucesso')
+    else:
+      print('Não foi possível realizar o saque :(')
+
+  def transfere(self,valor,destino):
+    self.saca(valor)
+    destino.deposita(valor)
+
+
+  
+  
+  @property
+  def pega_saldo(self):
+    return self.__saldo
+
+
+
+  @property
+  def pega_nome(self):
+    return self.__nome
+
+
+
+  @property
+  def limite(self):
+    return self.__limite
+
+
+  @limite.setter
+  def limite(self,valor):
+    self.__limite = valor
+
+
+  @staticmethod
+  def codigo_banco():
+    return {'BB':'001' ,'CAIXA':'104' ,'Bradesco':237}
+    
+ 
+
+# print(Conta.codigo_banco())
+
+
+
+conta = Conta(1223,'arthur',300.0,1000)
+
+print(conta.limite)
+
+# conta2 = Conta(1222,'arthur',20.0,5000)
+
+# aqui da errado
+# print(conta.__saldo)
+
+# aqui da certo
+
+# operacoes metodos
+# conta.extrato()
+# conta2.extrato()
+
+# conta.transfere(20,conta2)
+
+# conta.extrato()
+# conta2.extrato()
+
+# get
+# print(conta.get_pega_saldo())
+
+# print(conta.get_pega_nome())
+
+# print(conta.get_limte())
+
+# conta.set_limite(5000)
+
+# print(conta.get_limte())
+
+
+
+# conta.limite = 30
+# print(conta.limite)
+
+# print(conta.pega_nome)
+# print(conta.pega_saldo)
+
+# print(conta._Conta__pode_sacar(200))
+
+# conta.extrato()
+# conta.saca(1301)
+# conta.saca(1300)
+
+# print(conta.codigo_banco)
